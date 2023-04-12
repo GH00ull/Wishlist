@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RegController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +18,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/welcome', function () {
     return view('welcome');
 });
-Route::get('/auth', function () {
-    return view('auth');
-});
-Route::get('/peg', function () {
-    return view('reg');
-});
+// ** Авторизация и работа с пользователем
+Route::get('/auth', [AuthController::class, 'index'])->name('auth');
+
+Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
+
+Route::get('/auth/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+// ** Регистрация 
+
+Route::get('/peg', [RegController::class, 'index'])->name('reg');
+Route::post('/peg/go', [RegController::class, 'register'])->name('reg.register');
+
+
+
 Route::get('/', function () {
     return view('index');
 });
