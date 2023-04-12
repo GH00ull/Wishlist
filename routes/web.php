@@ -13,6 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
+});
+Route::get('/auth', function () {
+    return view('auth');
+});
+Route::get('/peg', function () {
+    return view('reg');
+});
+Route::get('/', function () {
+    return view('index');
+});
+Route::get('/wishlist', function () {
+    return view('wishlist');
+});
+Route::get('/addwishlist', function () {
+    return view('addwishlist');
+});
+Route::get('/produts', function () {
+    return view('produts');
+});
+Route::get('/addproduts', function () {
+    return view('addProduts');
 });
